@@ -133,19 +133,14 @@ body {
   }
 }
 
-.title-main {
-  width: 100%;
-  padding: 10rem;
-  text-transform: uppercase;
-  text-align: center;
-  margin-top: 20rem;
-  background-image: linear-gradient(to right, rgba(37, 41, 50, 0.85), rgba(37, 41, 50, 0.85)), url(../img/footer.jpg);
-  background-size: cover;
-  font-size: 5rem;
-  color: white;
-  font-family: "Montserrat", sans-serif;
-  letter-spacing: 5px;
-  font-weight: 500;
+.heading-tertiary {
+  font-size: 3rem;
+  display: inline-block;
+}
+@media (max-width: 37.5em) {
+  .heading-tertiary {
+    font-size: 1rem;
+  }
 }
 
 .u-text-center {
@@ -505,6 +500,25 @@ body {
   .section-css {
     padding: 8rem 0 8rem 0;
   }
+}
+
+.install {
+  width: 60vw;
+  margin: 200px auto 50px auto;
+}
+
+.download {
+  margin: 100px 0 20px 0;
+}
+.download__icon {
+  display: inline-block;
+  text-decoration: none;
+  color: #414857;
+  font-size: 3rem;
+  margin-left: 20px;
+}
+.download__icon:hover {
+  color: #00acee;
 }
 
 /*# sourceMappingURL=style.css.map */
