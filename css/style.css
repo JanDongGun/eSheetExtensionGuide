@@ -142,6 +142,21 @@ body {
   }
 }
 
+.title-main {
+  width: 100%;
+  padding: 10rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 20rem;
+  background-image: linear-gradient(to right, rgba(37, 41, 50, 0.85), rgba(37, 41, 50, 0.85)), url(../img/footer.jpg);
+  background-size: cover;
+  font-size: 5rem;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 5px;
+  font-weight: 500;
+}
+
 .u-text-center {
   text-align: center;
 }
@@ -298,6 +313,21 @@ body {
   margin-left: 3rem;
 }
 
+.guide__list {
+  list-style: none;
+}
+.guide__title {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+.guide__strong {
+  background-color: #e6dada;
+  padding: 5px 10px;
+}
+.guide__img {
+  margin-bottom: 10px;
+}
+
 .header {
   width: 100%;
   height: 100vh;
@@ -359,7 +389,7 @@ body {
 }
 
 .footer {
-  padding: 18rem 0;
+  padding: 10rem 0;
   background-image: linear-gradient(to right, rgba(37, 41, 50, 0.85), rgba(37, 41, 50, 0.85)), url(../img/footer.jpg);
   background-size: cover;
   color: white;
@@ -385,7 +415,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  justify-content: space-between;
+  justify-content: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 5rem;
   margin-top: 5rem;
@@ -408,10 +438,10 @@ body {
   display: inline-block;
 }
 .footer__infor ul li a:link, .footer__infor ul li a:visited {
-  font-size: 1.5rem;
+  font-size: 3rem;
   text-decoration: none;
   color: white;
-  padding: 0 0.5rem;
+  padding: 0 2rem;
 }
 
 .menu {
@@ -507,7 +537,7 @@ body {
 
 .install {
   width: 60vw;
-  margin: 20rem auto 5rem auto;
+  margin: 0rem auto 5rem auto;
 }
 
 .download {

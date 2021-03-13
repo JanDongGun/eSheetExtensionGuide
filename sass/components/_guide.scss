@@ -1,0 +1,19 @@
+.guide {
+  &__list {
+    list-style: none;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+
+  &__strong {
+    background-color: rgb(230, 218, 218);
+    padding: 5px 10px;
+  }
+
+  &__img {
+    margin-bottom: 10px;
+  }
+}
