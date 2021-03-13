@@ -1,16 +1,14 @@
 .install {
   width: 60vw;
-  margin: 200px auto 50px auto;
+  margin: 20rem auto 5rem auto;
 }
 .download {
-  margin: 100px 0 20px 0;
+  margin: 10rem 0 2rem 0;
 
   &__icon {
     display: inline-block;
-    text-decoration: none;
     color: $color-grey-dark-2;
-    font-size: 3rem;
-    margin-left: 20px;
+    font-size: 1.6rem;
 
     &:hover {
       color: #00acee;

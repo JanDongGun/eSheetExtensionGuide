@@ -42,7 +42,6 @@ body {
 
 .heading-tertiary {
   font-size: 3rem;
-  display: inline-block;
 
   @include respond(phone) {
     font-size: 1rem;

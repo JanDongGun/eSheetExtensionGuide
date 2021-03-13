@@ -135,7 +135,6 @@ body {
 
 .heading-tertiary {
   font-size: 3rem;
-  display: inline-block;
 }
 @media (max-width: 37.5em) {
   .heading-tertiary {
@@ -154,6 +153,10 @@ body {
   .u-margin-bottom-big {
     margin-bottom: 4rem;
   }
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 2rem;
 }
 
 .u-margin-left-small {
@@ -504,18 +507,16 @@ body {
 
 .install {
   width: 60vw;
-  margin: 200px auto 50px auto;
+  margin: 20rem auto 5rem auto;
 }
 
 .download {
-  margin: 100px 0 20px 0;
+  margin: 10rem 0 2rem 0;
 }
 .download__icon {
   display: inline-block;
-  text-decoration: none;
   color: #414857;
-  font-size: 3rem;
-  margin-left: 20px;
+  font-size: 1.6rem;
 }
 .download__icon:hover {
   color: #00acee;
