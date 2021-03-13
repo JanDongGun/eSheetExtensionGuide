@@ -1,0 +1,22 @@
+.u-text-center {
+  text-align: center;
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem;
+  @include respond(phone) {
+    margin-bottom: 4rem;
+  }
+}
+
+.u-margin-left-small {
+  margin-left: 20px;
+}
+
+.u-animated {
+  animation: zoomText 3s forwards ease-in;
+}
+
+.u-text-white {
+  color: white;
+}

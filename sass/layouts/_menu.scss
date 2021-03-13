@@ -1,0 +1,51 @@
+.menu {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  padding: 0 3%;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+  @include respond(phone) {
+    height: 10rem;
+  }
+
+  &__logo {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-family: $default-font-logo;
+      font-size: 5rem;
+      color: $color-grey-dark-1;
+      text-decoration: none;
+      transition: 0.5s;
+      animation: moveInLeft 1s ease-out backwards;
+      animation-delay: 1s;
+      @include respond(phone) {
+        font-size: 4rem;
+      }
+    }
+  }
+  &__bars {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: moveInRight 1s ease-out backwards;
+    animation-delay: 1s;
+  }
+
+  &--scroll {
+    background-color: $color-white;
+    height: 8rem;
+    box-shadow: 0 1rem 1rem rgba($color: #000000, $alpha: 0.2);
+
+    .menu__logo {
+      font-size: 4rem;
+    }
+  }
+}

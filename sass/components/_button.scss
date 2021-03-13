@@ -1,0 +1,33 @@
+.btn {
+  &:link,
+  &:visited {
+    text-decoration: none;
+    font-size: 1.8rem;
+  }
+
+  &--blue {
+    display: inline-block;
+    color: $color-white;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    padding: 1.5rem 4rem;
+    border-radius: 5px;
+    transition: 0.4s;
+    box-shadow: 0 1rem 1.5rem rgba($color: $color-black, $alpha: 0.08);
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-grey-dark-2;
+      transform: translateY(-5px);
+      box-shadow: 0 1.5rem 2rem rgba($color: $color-black, $alpha: 0.2);
+    }
+
+    &:active {
+      transform: translateY(-5px);
+    }
+  }
+
+  &--animate {
+    animation: btnAnimate 0.5s backwards ease-out;
+    animation-delay: 2s;
+  }
+}

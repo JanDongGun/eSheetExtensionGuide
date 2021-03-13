@@ -1,0 +1,23 @@
+.scrollTop {
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  bottom: 3rem;
+  right: 3rem;
+  background-color: $color-grey-dark-2;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: $color-white;
+  border-radius: 3px;
+  transform: scale(0.5) translateX(10em);
+  transition: 0.6s;
+  text-decoration: none;
+
+  &--animate {
+    right: 3rem;
+    transform: scale(1) translateX(0);
+  }
+}

@@ -1,0 +1,57 @@
+body{
+    font-size: 1.6rem;
+    line-height: 1.6;
+    font-family: $default-font-1;
+    font-weight: 300;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+[class^="heading-"]{
+    font-family: $default-font-2;
+    color: $color-grey-dark-2;
+}
+
+.heading-primary{
+    font-size: 8rem;
+
+    @include respond(tab-port){
+        font-size: 7rem;
+    }
+
+    @include respond(phone){
+        font-size: 4rem;
+    }
+}
+
+.heading-secondary{
+    font-size: 4rem;
+    transition: .5s;
+
+    @include respond(phone){
+        font-size: 3rem;
+    }
+
+    &:hover{
+        letter-spacing: 1rem;
+        @include respond(tab-port){
+            letter-spacing: 0rem;
+        }
+    }
+}
+
+.title-main{
+    width: 100%;
+    padding: 10rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20rem;
+    background-image: linear-gradient(to right, rgba(37, 41, 50, 0.85), rgba(37, 41, 50, 0.85)),
+    url(../img/footer.jpg);
+    background-size: cover;
+    font-size: 5rem;
+    color: $color-white;
+    font-family: $default-font-2;
+    letter-spacing: 5px;
+    font-weight: 500;
+}
