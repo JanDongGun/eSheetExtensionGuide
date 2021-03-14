@@ -3,9 +3,15 @@
     list-style: none;
   }
 
+  &__item {
+    margin-bottom: 4rem;
+  }
+
   &__title {
     font-size: 1.8rem;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: $color-grey-dark-2;
   }
 
   &__strong {
@@ -13,7 +19,41 @@
     padding: 5px 10px;
   }
 
+  &__copy {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid $color-grey-light-1;
+    width: 30%;
+    color: $color-grey-light;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__btn,
+  &__btn-code {
+    cursor: pointer;
+    margin-left: 10px;
+    color: $color-white;
+    padding: 1rem 1.5rem;
+    background-color: $color-grey-dark-2;
+    border: none;
+    border-radius: 5px;
+    &:focus {
+      outline: none;
+    }
+  }
+
   &__img {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    display: block;
   }
 }
