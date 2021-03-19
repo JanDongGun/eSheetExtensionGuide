@@ -113,25 +113,29 @@ window.addEventListener("DOMContentLoaded", function () {
   `;
   }
 
-  copyGuide.addEventListener("click", (e) => {
-    inputGuide.select();
-    document.execCommand("copy");
-    copyGuide.textContent = "Copied!";
+  if (copyGuide) {
+    copyGuide.addEventListener("click", (e) => {
+      inputGuide.select();
+      document.execCommand("copy");
+      copyGuide.textContent = "Copied!";
 
-    setTimeout(() => {
-      copyGuide.textContent = "Copy";
-    }, 2000);
-  });
+      setTimeout(() => {
+        copyGuide.textContent = "Copy";
+      }, 2000);
+    });
+  }
 
-  copyGuideCode.addEventListener("click", (e) => {
-    code.select();
-    document.execCommand("copy");
-    copyGuideCode.textContent = "Copied!";
+  if (copyGuideCode) {
+    copyGuideCode.addEventListener("click", (e) => {
+      code.select();
+      document.execCommand("copy");
+      copyGuideCode.textContent = "Copied!";
 
-    setTimeout(() => {
-      copyGuideCode.textContent = "Copy";
-    }, 2000);
-  });
+      setTimeout(() => {
+        copyGuideCode.textContent = "Copy";
+      }, 2000);
+    });
+  }
 
   window.addEventListener("scroll", function () {
     var offset = window.pageYOffset;
