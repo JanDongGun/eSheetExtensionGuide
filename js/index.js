@@ -12,7 +12,9 @@ window.addEventListener("DOMContentLoaded", function () {
   const copyGuideCode = document.querySelector(".guide__btn-code");
   const inputGuide = document.querySelector(".guide__input");
   const code = document.querySelector("#code");
-  code.value = `
+
+  if (code.value) {
+    code.value = `
   function doGet() {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const ws = ss.getSheetByName("vocabulary");
@@ -109,6 +111,7 @@ window.addEventListener("DOMContentLoaded", function () {
     );
   }
   `;
+  }
 
   copyGuide.addEventListener("click", (e) => {
     inputGuide.select();
