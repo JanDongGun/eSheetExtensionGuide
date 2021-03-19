@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const inputGuide = document.querySelector(".guide__input");
   const code = document.querySelector("#code");
 
-  if (code.value) {
+  if (code) {
     code.value = `
   function doGet() {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
