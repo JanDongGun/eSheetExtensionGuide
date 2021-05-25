@@ -15,97 +15,101 @@ window.addEventListener("DOMContentLoaded", function () {
 
   if (code) {
     code.value = `
-    function doGet() {
-
-      const ss = SpreadsheetApp.getActiveSpreadsheet();
-      const ws = ss.getSheetByName("vocabulary");
-      const data = ws.getRange("A1").getDataRegion().getValues();
-      const headers = data.shift();
+  function doGet() {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const ws = ss.getSheetByName("vocabulary");
+    const data = ws.getRange("A1").getDataRegion().getValues();
+    const header = data.shift();
   
-      const jsonArray = data.map(r => {
-          let obj = {};
-          headers.forEach((h, i) => {
-              obj[h] = r[i];
-          })
-          return obj;
-      })
+    const jsonArray = data.map((r) => {
+      let obj = {};
+      header.forEach((h, i) => {
+        obj[h] = r[i];
+      });
+      return obj;
+    });
   
-      const response = [{ status: 200, data: jsonArray }];
-  
-      return sendJSON_(response);
-  
+    const response = [{ status: 200, data: jsonArray }];
+    return sendJSON_(response);
   }
   
   function doPost(e) {
-  
-    const type = e.parameter.func;
-    const item = e.parameter.item;
-    if (type === "remove") {
-      deleteRow(item);
+    const type = e.parameter.type;
+    const value = e.parameter.value;
+    if (type === "delete") {
+      deleteRow(value);
     }
     if (type === "edit") {
-      const arr = item.split(":");
+      const arr = value.split(":");
       replaceRow(arr);
     }
   
-    const requiredColumns = ["Terms", "Category","VietnameseMeaning"];
     let jsonResponse;
-  
+    const requiredColumns = ["Terms", "Category","VietnameseMeaning"];
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const ws = ss.getSheetByName("vocabulary");
+    const data = ws.getRange(2, 1, ws.getLastRow(), ws.getLastColumn());
     const headers = ws.getRange(1, 1, 1, ws.getLastColumn()).getValues()[0];
     const headersOriginalOrder = headers.slice();
   
+    // remove id columns header
     headers.sort();
   
     const body = e.postData.contents;
     const bodyJSON = JSON.parse(body);
     const headersPassed = Object.keys(bodyJSON).sort();
-      if (!checkColumnsPassed_(headers, headersPassed, requiredColumns)) {
-        jsonResponse = { status: 500, message: "Invalid Agruments Passed" };
-        return sendJSON_(jsonResponse);
-     }
-    const arrayOfData = headersOriginalOrder.map(h => bodyJSON[h]);
-    ws.appendRow(arrayOfData);
-    return sendJSON_(bodyJSON);
   
+    if (!checkColumnsPassed_(headers, headersPassed, requiredColumns)) {
+      jsonResponse = { status: 500, message: "Invalid Arguments Passed" };
+      return sendJSON_(jsonResponse);
+    }
+  
+    const arrayOfData = headersOriginalOrder.map((h) => bodyJSON[h]);
+    ws.appendRow(arrayOfData);
+    data.sort(1);
+    return sendJSON_(bodyJSON);
   }
   
-  function checkColumnsPassed_(arrAllColumns, arrColumnsPassed, arrRequiredColumns) {
-    if (!arrRequiredColumns.every((item) => arrColumnsPassed.includes(item)))return false;
-    if (!arrColumnsPassed.every((item) => arrAllColumns.includes(item)))return false;
+  function replaceRow(value) {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const editSheet = ss.getSheetByName("vocabulary");
+    const lastRowEdit = editSheet.getLastRow();
+    for (let i = 2; i <= lastRowEdit; i++) {
+      if (editSheet.getRange(i, 1).getValue() === value[0]) {
+        editSheet.getRange("A" + i + ":C" + i).setValues([value]);
+      }
+    }
+  }
+  
+  function deleteRow(value) {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const editSheet = ss.getSheetByName("vocabulary");
+    const lastRowEdit = editSheet.getLastRow();
+    for (let i = 2; i <= lastRowEdit; i++) {
+      if (editSheet.getRange(i, 1).getValue() === value) {
+        editSheet.deleteRow(i);
+      }
+    }
+  }
+  
+  
+  function checkColumnsPassed_(
+    arrAllColumns,
+    arrColumnsPassed,
+    arrRequiredColumns
+  ) {
+    if (!arrRequiredColumns.every((item) => arrColumnsPassed.includes(item)))
+      return false;
+    if (!arrColumnsPassed.every((item) => arrAllColumns.includes(item)))
+      return false;
     return true;
   }
   
-  function sendJSON_(jsonResponse) {
-    return ContentService
-        .createTextOutput(JSON.stringify(jsonResponse))
-        .setMimeType(ContentService.MimeType.JSON);
+  function sendJSON_(response) {
+    return ContentService.createTextOutput(JSON.stringify(response)).setMimeType(
+      ContentService.MimeType.JSON
+    );
   }
-  
-  function deleteRow(item){
-    var  ss = SpreadsheetApp.getActiveSpreadsheet();
-    var editSheet = ss.getSheetByName("vocabulary");
-    var lastRowEdit = editSheet.getLastRow();
-  
-    for(var i = 2; i <= lastRowEdit; i++){
-      if (editSheet.getRange(i, 1).getValue() == item)
-      editSheet.deleteRow(i);
-    }
-  }
-  
-  function replaceRow(item) {
-      var  ss = SpreadsheetApp.getActiveSpreadsheet();
-      var editSheet = ss.getSheetByName("vocabulary");
-      var lastRowEdit = editSheet.getLastRow();
-  
-      for (var i = 2; i <= lastRowEdit; i++) {
-        if (editSheet.getRange(i, 1).getValue() === item[0]) {
-          editSheet.getRange('A' + i + ':E' + i).setValues([item]);
-        }
-      }
-    }
-  
   `;
   }
 
